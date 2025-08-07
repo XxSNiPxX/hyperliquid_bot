@@ -1,0 +1,3 @@
+[wallet]
+private_key = "your-private-key-here"
+address = "0xYourWalletAddress"
