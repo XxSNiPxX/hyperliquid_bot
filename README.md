@@ -1,26 +1,79 @@
 # Hyperliquid Market Making Bot
 
-A high-performance market-making bot built for the Hyperliquid perpetual exchange, written in Rust. It features custom order placement logic, orderbook tracking, and profit-based exit strategies.
+This is a basic market-making bot built for the [Hyperliquid](https://hyperliquid.xyz) exchange. It places layered bid and ask limit orders based on the current orderbook, listens to fills, and optionally exits positions based on PnL or size.
 
 ---
 
-## 🚀 Features
+## Features
 
-- Place layered bids/asks with custom sizing and spreads.
-- Cancel stale or filled orders.
-- Track PnL and close positions at profit thresholds.
-- Modular architecture for strategy and order logic.
+- Layered bid/ask strategy
+- Position tracking (size, entry price)
+- PnL tracking and position exit logic
+- Fee estimation and volume tracking
+- Cancel and replace logic for stale or filled orders
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
-```plaintext
-├── Cargo.toml              # Rust dependencies and project config
-├── config.toml             # Secrets and wallet configuration (not committed)
-├── src/
-│   ├── main.rs             # Entry point
-│   ├── trade_new.rs        # Core trading logic (order placement, exit strategies)
-│   ├── config.rs           # Config loading from TOML
-│   ├── utils.rs            # Helper functions (e.g., size computation, logger)
-│   └── client.rs           # Hyperliquid API wrapper and error handling
+```bash
+project/
+├── Cargo.toml
+└── src/
+    └── main.rs
+```
+
+Everything is currently implemented in a single file: `src/main.rs`.
+
+---
+
+## Setup
+
+### Prerequisites
+
+- Rust (recommended: latest stable version)
+- A Hyperliquid account
+- Your private key and wallet address
+
+### Installation
+
+```bash
+git clone https://github.com/your-username/hyperliquid-market-maker.git
+cd hyperliquid-market-maker
+cargo build --release
+```
+
+---
+
+## Configuration
+
+At the moment, private key and wallet address are hardcoded directly inside `main.rs`.
+
+You should move them to a separate config file (like `config.toml`) or use environment variables in the future for better security.
+
+---
+
+## Usage
+
+```bash
+cargo run --release
+```
+
+The bot will continuously:
+
+1. Fetch the orderbook
+2. Place layered bids and asks around the mid price
+3. Monitor fills
+4. Exit positions when PnL or position thresholds are met
+
+---
+
+## Disclaimer
+
+This bot is experimental. Use at your own risk. Trading involves risk, and you can lose money.
+
+---
+
+## License
+
+MIT
