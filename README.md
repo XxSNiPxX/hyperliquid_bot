@@ -38,8 +38,8 @@ Everything is currently implemented in a single file: `src/main.rs`.
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/hyperliquid-market-maker.git
-cd hyperliquid-market-maker
+git clone https://github.com/XxSNiPxX/hyperliquid_bot.git
+cd hyperliquid_bot
 cargo build --release
 ```
 
